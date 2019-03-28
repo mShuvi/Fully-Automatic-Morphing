@@ -1,0 +1,43 @@
+{
+  "name": "test_opt",
+  "device": "cuda",  // "cuda"|"cpu"
+  "seed":16092017,
+  "stop_at_level": 1,
+
+//  "load": {
+//    "dir": "../results/test_opt/features",
+//    "level": 3
+//  },
+
+  "data": {
+    "result_path": "../results",
+    "imgA": "imgA.png",
+    "imgB": "imgB.png",
+    "resize_images": 224  // if not -1, resize to this size
+  },
+
+  "params": {
+      "style_to_content_ratio": [1, 6, 7, 8],
+    "patch_search_radi": "3, 3, 2, 2, 100",
+    "tau": 0.05,
+    "patch_sizes": "3, 3, 3, 3, 3",
+    "n_patchmatch_iter": 2,
+    "image_avg_filter_size": 3,  // for none, use 1 (one)
+    "map_upsample_mode": "nearest", // "bilinear"|"nearest"
+    "use_propogation": true
+    },
+
+  "morph": {
+    "use_mid_mapping": false,
+    "do_twosided": true,
+    "morph_segments": 72,
+    "smoothness_ratio": [2, 10, 10, 3, 0],
+    "bidir_ratio": "0,0,0,0,0"
+  },
+
+  "deconv": {
+    "lr": 2e-3,
+    "criterion": "huber", // "l1"|"l2"|"huber"
+    "print_freq": 2500
+  }
+}
